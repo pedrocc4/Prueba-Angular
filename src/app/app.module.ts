@@ -16,19 +16,24 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {CancionService} from "./contact-reactive/cancion.service";
 import {HttpClientModule} from "@angular/common/http";
 import {MatTabsModule} from "@angular/material/tabs";
-import { HeaderComponent } from './header/header.component';
+import {HeaderComponent} from './header/header.component';
+import {CancionesComponent} from './canciones/canciones.component';
+import { DialogoComponent } from './dialogo/dialogo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactReactiveComponent,
-    HeaderComponent
+    HeaderComponent,
+    CancionesComponent,
+    DialogoComponent
   ],
+  entryComponents: [DialogoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

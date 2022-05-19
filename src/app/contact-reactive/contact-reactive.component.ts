@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AppComponent} from "../app.component";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogoComponent} from "../dialogo/dialogo.component";
 
 @Component({
   selector: 'app-contact-reactive',
@@ -10,17 +12,20 @@ import {AppComponent} from "../app.component";
 export class ContactReactiveComponent implements OnInit {
   contactForm!: FormGroup;
 
-  constructor(private readonly fb: FormBuilder, private app: AppComponent) {
+  constructor(private readonly fb: FormBuilder,
+              private app: AppComponent,
+              public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
     this.contactForm = this.initForm();
   }
 
-  onSubmit(): void {
+  onSubmit() {
     console.log(this.contactForm.value);
     this.app.onAddEmloyee(this.contactForm);
     this.contactForm.reset();
+    this.dialog.open(DialogoComponent);
   }
 
   initForm(): FormGroup {

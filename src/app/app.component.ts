@@ -9,10 +9,9 @@ import {FormGroup} from "@angular/forms";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
   public cancion!: Cancion;
-  public canciones!: Cancion[];
 
   constructor(private cancionService: CancionService) {
   }
@@ -27,17 +26,7 @@ export class AppComponent implements OnInit {
       }
     );
   }
-  public getCanciones(): void {
-    this.cancionService.getCanciones().subscribe(
-      (response: Cancion[]) => {
-        this.canciones = response;
-        console.log(this.canciones);
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
-  }
+
   public onAddEmloyee(form: FormGroup): void {
     console.log(form);
     this.cancionService.crearCancion(form.value).subscribe(
@@ -51,9 +40,5 @@ export class AppComponent implements OnInit {
         //addForm.reset();
       }
     );
-  }
-
-  ngOnInit(): void {
-    this.getCanciones();
   }
 }

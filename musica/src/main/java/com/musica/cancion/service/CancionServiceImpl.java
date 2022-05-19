@@ -12,21 +12,21 @@ import java.util.List;
 @Service
 public class CancionServiceImpl implements ICancionService {
 
-    @Autowired
-    private ICancionMapper mapper;
+  @Autowired
+  private ICancionMapper mapper;
 
-    @Autowired
-    private ICancionRepositoryJPA repositoryJPA;
+  @Autowired
+  private ICancionRepositoryJPA repositoryJPA;
 
-    @Override
-    public CancionOutputDTO getCancion(Integer id) {
-        return mapper.toDTO(repositoryJPA.getById(id));
-    }
+  @Override
+  public CancionOutputDTO getCancion(Integer id) {
+    return mapper.toDTO(repositoryJPA.getById(id));
+  }
 
-    @Override
-    public CancionOutputDTO crearCancion(CancionInputDTO cancionInputDTO) {
-        return mapper.toDTO(repositoryJPA.save(mapper.toEntity(cancionInputDTO)));
-    }
+  @Override
+  public CancionOutputDTO crearCancion(CancionInputDTO cancionInputDTO) {
+    return mapper.toDTO(repositoryJPA.save(mapper.toEntity(cancionInputDTO)));
+  }
 
   @Override
   public List<CancionOutputDTO> getCanciones() {

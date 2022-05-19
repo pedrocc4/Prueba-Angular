@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @Slf4j
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:4200")
 public class Controller {
 
   @Autowired
@@ -21,7 +22,7 @@ public class Controller {
 
   @ResponseStatus(HttpStatus.OK)
   @GetMapping("cancion/{id}")
-  @CrossOrigin(origins = "http://localhost:4200")
+  //@CrossOrigin(origins = "http://localhost:4200")
   public ResponseEntity<CancionOutputDTO> getCancion(@PathVariable Integer id) {
     log.info("Obteniendo datos de cancion con id: " + id);
     return ResponseEntity.status(HttpStatus.OK).body(service.getCancion(id));
@@ -29,7 +30,7 @@ public class Controller {
 
   @ResponseStatus(HttpStatus.CREATED)
   @PostMapping("cancion")
-  @CrossOrigin(origins = "http://localhost:4200")
+  //@CrossOrigin(origins = "http://localhost:4200")
   public ResponseEntity<CancionOutputDTO> addCancion(
     @RequestBody CancionInputDTO cancionInputDTO) {
     log.info("Intentando crear: " + cancionInputDTO);
@@ -38,7 +39,7 @@ public class Controller {
 
   @ResponseStatus(HttpStatus.OK)
   @GetMapping("canciones")
-  @CrossOrigin(origins = "http://localhost:4200")
+  //@CrossOrigin(origins = "http://localhost:4200")
   public ResponseEntity<List<CancionOutputDTO>> getCanciones() {
     log.info("Obteniendo todas las canciones...");
     return ResponseEntity.status(HttpStatus.OK).body(service.getCanciones());
