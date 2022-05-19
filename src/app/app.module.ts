@@ -18,11 +18,16 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatToolbarModule} from "@angular/material/toolbar";
+import {CancionService} from "./contact-reactive/cancion.service";
+import {HttpClientModule} from "@angular/common/http";
+import {MatTabsModule} from "@angular/material/tabs";
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContactReactiveComponent
+    ContactReactiveComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +45,11 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     MatCardModule,
     MatInputModule,
     NgbModule,
-    MatToolbarModule
+    MatToolbarModule,
+    HttpClientModule,
+    MatTabsModule
   ],
-  providers: [],
+  providers: [CancionService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

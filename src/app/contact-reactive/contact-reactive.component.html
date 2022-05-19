@@ -1,21 +1,7 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>My App</span>
-  <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
-  </button>
-</mat-toolbar>
-
 <mat-card class="formCard">
-  <mat-card-title>Formulario Angular</mat-card-title>
-  <mat-card-subtitle>Registro</mat-card-subtitle>
-  <form style="width: 100%" (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+  <mat-card-title>Agrega tu canción favorita</mat-card-title>
+  <mat-card-subtitle>Rellenar</mat-card-subtitle>
+  <form style="width: 100%" (ngSubmit)="onSubmit()" [formGroup]="contactForm" method="post">
 
     <mat-card-content class="formContent">
 
@@ -32,33 +18,29 @@
       </div>
 
       <mat-form-field class="formInput" appearance="fill">
-        <mat-label>Apellidos</mat-label>
-        <input required name="apellidos" formControlName="apellidos" matInput>
+        <mat-label>Duración</mat-label>
+        <input required name="duracion" formControlName="duracion" matInput>
       </mat-form-field>
-      <div [hidden] *ngIf="contactForm.get('apellidos')?.touched && contactForm.get('apellidos')?.errors?.['required']"
+      <div [hidden] *ngIf="contactForm.get('duracion')?.touched && contactForm.get('duracion')?.errors?.['required']"
            class="alert alert-danger formInput">Este campo es requerido
       </div>
-      <div [hidden] *ngIf="contactForm.get('apellidos')?.touched && contactForm.get('apellidos')?.errors?.['minlength']"
+      <div [hidden] *ngIf="contactForm.get('duracion')?.touched && contactForm.get('duracion')?.errors?.['minlength']"
            class="alert alert-danger formInput">Este campo debe tener longitud mínima de
-        {{contactForm.get('apellidos')?.errors?.['minlength'].requiredLength}}
+        {{contactForm.get('duracion')?.errors?.['minlength'].requiredLength}}
       </div>
 
+      <!--      <mat-form-field class="formInput" appearance="fill">-->
+      <!--        <mat-label>Email</mat-label>-->
+      <!--        <input required name="email" formControlName="email" matInput>-->
+      <!--      </mat-form-field>-->
+      <!--      <div [hidden] *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['required']"-->
+      <!--           class="alert alert-danger formInput">Este campo es requerido-->
+      <!--      </div>-->
+      <!--      <div [hidden] *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['email']"-->
+      <!--           class="alert alert-danger formInput">El campo no tiene formato de email válido</div>-->
 
-      <mat-form-field class="formInput" appearance="fill">
-        <mat-label>Email</mat-label>
-        <input required name="email" formControlName="email" matInput>
-      </mat-form-field>
-      <div [hidden] *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['required']"
-           class="alert alert-danger formInput">Este campo es requerido
-      </div>
-      <div [hidden] *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['email']"
-           class="alert alert-danger formInput">El campo no tiene formato de email válido</div>
-
-
+      <button mat-raised-button color="primary" type="submit">Enviar</button>
     </mat-card-content>
   </form>
-  <mat-card-actions>
-    <button mat-raised-button color="primary" type="submit">Enviar</button>
-  </mat-card-actions>
 </mat-card>
 

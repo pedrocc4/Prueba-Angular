@@ -3,8 +3,12 @@ package com.musica.cancion.service;
 import com.musica.cancion.infraestructure.controller.dto.CancionInputDTO;
 import com.musica.cancion.infraestructure.controller.dto.CancionOutputDTO;
 
-public interface ICancionService {
-    CancionOutputDTO getCancion(Integer id);
+import java.util.List;
 
-    CancionOutputDTO crearCancion(CancionInputDTO cancionInputDTO);
+public interface ICancionService {
+  CancionOutputDTO getCancion(Integer id);
+
+  CancionOutputDTO crearCancion(CancionInputDTO cancionInputDTO);
+
+  List<CancionOutputDTO> getCanciones();
 }

@@ -7,6 +7,8 @@ import com.musica.cancion.infraestructure.repository.ICancionRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CancionServiceImpl implements ICancionService {
 
@@ -25,4 +27,10 @@ public class CancionServiceImpl implements ICancionService {
     public CancionOutputDTO crearCancion(CancionInputDTO cancionInputDTO) {
         return mapper.toDTO(repositoryJPA.save(mapper.toEntity(cancionInputDTO)));
     }
+
+  @Override
+  public List<CancionOutputDTO> getCanciones() {
+    return mapper.toDTOList(repositoryJPA.findAll());
+  }
+
 }

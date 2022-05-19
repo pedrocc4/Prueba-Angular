@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-contact-reactive',
@@ -9,7 +10,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class ContactReactiveComponent implements OnInit {
   contactForm!: FormGroup;
 
-  constructor(private readonly fb: FormBuilder) {
+  constructor(private readonly fb: FormBuilder, private app: AppComponent) {
   }
 
   ngOnInit(): void {
@@ -17,14 +18,17 @@ export class ContactReactiveComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log('Form ->')
+    console.log(this.contactForm.value);
+    this.app.onAddEmloyee(this.contactForm);
+    this.contactForm.reset();
   }
 
   initForm(): FormGroup {
     return this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(5)]],
-      apellidos: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.minLength(3), Validators.email]],
+      duracion: ['', [Validators.required]]
+      // ,
+      // email: ['', [Validators.required, Validators.minLength(3), Validators.email]],
     })
   }
 }
